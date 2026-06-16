@@ -1,0 +1,16 @@
+{
+  "name": "rentease-root",
+  "version": "1.0.0",
+  "description": "Root workspace for RentEase application",
+  "scripts": {
+    "install-client": "npm install --prefix client",
+    "install-server": "npm install --prefix server",
+    "install-all": "npm install && npm run install-client && npm run install-server",
+    "client": "npm start --prefix client",
+    "server": "npm start --prefix server",
+    "start": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import { categories } from "../data";
 import "../styles/Listings.scss";
 import ListingCard from "./ListingCard";
+import { BASE_URL } from "../config";
 import Loader from "./Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { setListings } from "../redux/state";
@@ -27,7 +28,7 @@ const Listings = () => {
       }
 
       const response = await fetch(
-        `http://localhost:3001/properties?${queryParams.toString()}`
+        `${BASE_URL}/properties?${queryParams.toString()}`
       );
       const data = await response.json();
       dispatch(setListings({ listings: data }));
@@ -39,7 +40,7 @@ const Listings = () => {
 
   const fetchLocations = async () => {
     try {
-      const res = await fetch("http://localhost:3001/properties/locations/all");
+      const res = await fetch(`${BASE_URL}/properties/locations/all`);
       const data = await res.json();
       console.log("Fetched Locations:", data); // ✅ Confirm output
       setLocations(data);

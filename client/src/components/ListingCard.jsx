@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/ListingCard.scss";
+import { BASE_URL } from "../config";
 
 import {
   ArrowForwardIos,
@@ -54,7 +55,7 @@ const ListingCard = ({
   const patchWishList = async () => {
     if (user?._id !== creator._id) {
       const response = await fetch(
-        `http://localhost:3001/users/${user?._id}/${listingId}`,
+        `${BASE_URL}/users/${user?._id}/${listingId}`,
         {
           method: "PATCH",
           header: {
@@ -82,7 +83,7 @@ const ListingCard = ({
           {listingPhotoPaths?.map((photo, index) => (
             <div key={index} className="slide">
               <img
-                src={`http://localhost:3001/${photo?.replace("public", "")}`}
+                src={`${BASE_URL}/${photo?.replace("public", "")}`}
                 alt={`photo ${index + 1}`}
               />
               <div

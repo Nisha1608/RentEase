@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setLogin } from "../redux/state";
 // import Footer from "../components/Footer";
+import { BASE_URL } from "../config";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -17,7 +18,7 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3001/auth/login", {
+      const response = await fetch(`${BASE_URL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

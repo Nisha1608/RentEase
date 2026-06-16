@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { CheckIcon } from "@heroicons/react/24/solid";
 import "../styles/PaymentSuccess.scss";
+import { BASE_URL } from "../config";
 
 const PaymentSuccess = () => {
   const [searchParams] = useSearchParams();
@@ -20,12 +21,12 @@ const PaymentSuccess = () => {
 
       try {
         const response = await fetch(
-          `http://localhost:3001/stripe/session-details/${sessionId}`
+          `${BASE_URL}/stripe/session-details/${sessionId}`
         );
         const session = await response.json();
         setBookingData(session);
 
-        const res = await fetch("http://localhost:3001/bookings/create", {
+        const res = await fetch(`${BASE_URL}/bookings/create`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

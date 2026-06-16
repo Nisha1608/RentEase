@@ -7,6 +7,7 @@ import { Search, Person, Menu } from "@mui/icons-material";
 import { useSelector, useDispatch } from "react-redux";
 import { setLogout } from "../redux/state";
 import "../styles/Navbar.scss";
+import { BASE_URL } from "../config";
 
 const Navbar = () => {
   const [dropdownMenu, setDropdownMenu] = useState(false);
@@ -62,7 +63,7 @@ const Navbar = () => {
             <Person sx={{ color: variables.darkgrey }} />
           ) : (
             <img
-              src={`http://localhost:3001/${user.profileImagePath.replace(
+              src={`${BASE_URL}/${user.profileImagePath.replace(
                 "public",
                 ""
               )}`}
