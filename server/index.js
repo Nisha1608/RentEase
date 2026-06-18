@@ -12,13 +12,25 @@ const authRoutes = require("./routes/auth");
 
 app.use(express.json());
 
-// CORS setup
-const allowedOrigin = process.env.CLIENT_URL || "http://localhost:3000";
-app.use(cors({
-  origin: allowedOrigin,
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type"]
-}));
+ // CORS setup
+// const allowedOrigin = process.env.CLIENT_URL || "http://localhost:3000";
+// app.use(cors({
+//   origin: allowedOrigin,
+//   methods: ["GET", "POST"],
+//   allowedHeaders: ["Content-Type"]
+// }));
+
+
+
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      process.env.CLIENT_URL
+    ],
+    credentials: true
+  })
+);
 
 // Serve static files
 app.use(express.static("public"));
