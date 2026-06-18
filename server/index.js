@@ -52,3 +52,11 @@ mongoose
     app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
   })
   .catch((err) => console.log(`${err} did not connect`));
+
+
+  app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Backend is running 🚀"
+  });
+});
